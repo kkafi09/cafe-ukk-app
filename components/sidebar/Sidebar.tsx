@@ -5,14 +5,28 @@ import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { ReactSVG } from "react-svg";
 import { Button } from "../ui/button";
+import { IRole } from "@/types/role-types";
 
-const Menus = [
-  { title: "Dashboard", src: "home", href: "/" },
-  { title: "Menu", src: "book", href: "/menu" },
-  { title: "History", src: "history", href: "/history" },
-];
+const menuData = {
+  KASIR: [
+    { title: "Dashboard", src: "home", href: "/" },
+    { title: "Menu", src: "book", href: "/kasir/menu" },
+    { title: "History", src: "history", href: "/kasir/history" },
+  ],
+  ADMIN: [
+    { title: "Dashboard", src: "home", href: "/" },
+    { title: "Menu", src: "book", href: "/admin/menu" },
+    { title: "Table", src: "book", href: "/admin/table" },
+    { title: "User", src: "book", href: "/admin/user" },
+  ],
+  MANAGER: [
+    { title: "Dashboard", src: "home", href: "/" },
+    { title: "Financial", src: "book", href: "/manajer/financial" },
+    { title: "History", src: "history", href: "/manajer/history" },
+  ],
+};
 
-const Sidebar = () => {
+const Sidebar = ({ role }: { role: IRole }) => {
   const [open, setOpen] = useState(true);
   const router = useRouter();
   const pathName = usePathname();
@@ -22,6 +36,7 @@ const Sidebar = () => {
     router.push("/login");
   };
 
+  const Menus = menuData[role];
   return (
     <div
       className={` ${
@@ -44,7 +59,7 @@ const Sidebar = () => {
         </h1>
       </div>
       <ul className="pt-6 flex flex-col gap-y-2">
-        {Menus.map((Menu, index) => (
+        {Menus?.map((Menu, index) => (
           <Link
             href={Menu.href}
             key={index}

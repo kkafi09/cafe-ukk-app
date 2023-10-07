@@ -69,22 +69,22 @@ const CardMenu: React.FC<Props> = ({ menu }: Props) => {
             </Button>
           </div>
         ) : (
-          <div className="flex gap-x-3 items-center justify-center w-1/3">
-            <button
+          <div className="flex gap-x-3 items-center mx-auto justify-between w-full">
+            <Button
               onClick={() => decreaseCartQuantity(menu)}
-              className="rounded-full bg-zinc-50 w-9 h-9 flex justify-center items-center text-lg text-zinc-800 font-bold border"
+              className="bg-zinc-50 w-9 h-9 flex justify-center items-center text-lg text-zinc-800 font-bold"
             >
               -
-            </button>
+            </Button>
             <span className="font-semibold text-zinc-800 w-6 text-center">
               {quantity}
             </span>
-            <button
+            <Button
               onClick={() => increaseCartQuantity(menu)}
-              className="rounded-full bg-zinc-50 w-9 h-9 flex justify-center items-center text-lg text-zinc-800 font-semibold border"
+              className="bg-zinc-50 w-9 h-9 flex justify-center items-center text-lg text-zinc-800 font-semibold"
             >
               +
-            </button>
+            </Button>
           </div>
         )}
       </div>

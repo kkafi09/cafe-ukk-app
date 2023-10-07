@@ -1,4 +1,4 @@
-import TableHis from "@/app/history/fragments/TableHistory";
+import TableHis from "@/app/kasir/history/fragments/TableHistory";
 import DatePickerWithRange from "@/components/reusable/DatePickerWithRange";
 import ReSelect from "@/components/reusable/ReSelect";
 import RootLayout from "@/layouts/RootLayout";
