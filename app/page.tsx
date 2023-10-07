@@ -1,7 +1,5 @@
-import RootLayout from "@/layouts/RootLayout";
-import React from "react";
-import CardMenu from "@/components/reusable/CardMenu";
 import CardTransaction from "@/components/reusable/CardTransaction";
+import RootLayout from "@/layouts/RootLayout";
 
 const dataTransaksi = [
   { id: 1, nomor_meja: "3", nama_pelanggan: "Budi", total_bayar: "30.000" },
@@ -31,11 +29,7 @@ const Index = () => {
         <div>
           <h1 className="text-2xl font-semibold">Top Menu</h1>
           <div className="flex w-full mt-2">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              <CardMenu />
-              <CardMenu />
-              <CardMenu />
-            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
           </div>
         </div>
       </div>

@@ -1,24 +1,26 @@
 "use client";
+import { deleteCookie } from "cookies-next";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { ReactSVG } from "react-svg";
+import { Button } from "../ui/button";
+
+const Menus = [
+  { title: "Dashboard", src: "home", href: "/" },
+  { title: "Menu", src: "book", href: "/menu" },
+  { title: "History", src: "history", href: "/history" },
+];
+
 const Sidebar = () => {
   const [open, setOpen] = useState(true);
-
+  const router = useRouter();
   const pathName = usePathname();
 
-  const Menus = [
-    { title: "Dashboard", src: "home", href: "/" },
-    { title: "Menu", src: "book", href: "/menu" },
-    { title: "History", src: "history", href: "/history" },
-    {
-      title: "Log Out",
-      src: "logout",
-      href: "/logout",
-      gap: true,
-    },
-  ];
+  const handleLogout = () => {
+    deleteCookie("jwtToken");
+    router.push("/login");
+  };
 
   return (
     <div
@@ -48,10 +50,7 @@ const Sidebar = () => {
             key={index}
             className={`flex p-2 cursor-pointer border-l-4 text-zinc-800 hover:bg-light-white text-base items-center gap-x-4 ${
               pathName === Menu.href ? "border-primary" : "border-white"
-            }
-              ${Menu.gap ? "mt-9" : "mt-2"} ${
-              index === 0 && "bg-light-white"
-            } `}
+            } ${index === 0 && "bg-light-white"} `}
           >
             <ReactSVG src={`/assets/icons/${Menu.src}.svg`} />
             <span className={`${!open && "hidden"} origin-left duration-200`}>
@@ -59,6 +58,14 @@ const Sidebar = () => {
             </span>
           </Link>
         ))}
+        <Button
+          variant={"ghost"}
+          className="text-zinc-800 hover:bg-light-white text-base items-center gap-x-4 mt-20"
+          onClick={() => handleLogout()}
+        >
+          <ReactSVG src={`/assets/icons/logout.svg`} />
+          <span className={`${!open && "hidden"} duration-200`}>Logout</span>
+        </Button>
       </ul>
     </div>
   );

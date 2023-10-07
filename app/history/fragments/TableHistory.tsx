@@ -7,7 +7,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-
 import { HiOutlinePrinter } from "react-icons/hi2";
 
 const invoices = [
@@ -77,11 +76,12 @@ export default function TableHis() {
         <TableHeader>
           <TableRow>
             <TableHead className="w-[100px]">Invoice</TableHead>
-            <TableHead>Status</TableHead>
-            <TableHead>Barang</TableHead>
-            <TableHead>Tanggal</TableHead>
             <TableHead>Nama Pembeli</TableHead>
-            <TableHead>Amount</TableHead>
+            <TableHead>Nama Kasir</TableHead>
+            <TableHead>Status</TableHead>
+            <TableHead>Tanggal</TableHead>
+            <TableHead>No. Meja</TableHead>
+            <TableHead>Total</TableHead>
             <TableHead>Print</TableHead>
           </TableRow>
         </TableHeader>

@@ -3,16 +3,23 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { api } from "@/utils/api";
 import { Label } from "@radix-ui/react-label";
-import { setCookie } from "cookies-next";
-import React, { useState } from "react";
+import { hasCookie, setCookie } from "cookies-next";
+import { redirect } from "next/navigation";
+import * as React from "react";
 import { ScaleLoader } from "react-spinners";
 
 const Login = () => {
-  const [data, setData] = useState({
+  const [data, setData] = React.useState({
     username: "",
     password: "",
   });
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = React.useState(false);
+
+  React.useEffect(() => {
+    if (hasCookie("jwtToken")) {
+      redirect("/");
+    }
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -29,9 +36,9 @@ const Login = () => {
         password: data.password,
       })
       .then((res) => {
-        const token = res.data.data[0].token;
+        const token = res.data.data.token;
         if (token) {
-          setCookie("jwtToken", token);
+          setCookie("jwtToken", token, { maxAge: 2.5 * 60 * 60 * 1000 });
           window.location.replace("/");
         }
       })

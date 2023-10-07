@@ -1,18 +1,7 @@
-"use client";
-import RootLayout from "@/layouts/RootLayout";
-import React from "react";
-import TableHis from "./TableHis";
+import TableHis from "@/app/history/fragments/TableHistory";
 import DatePickerWithRange from "@/components/reusable/DatePickerWithRange";
-import { Select } from "@/components/ui/select";
-import {
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@radix-ui/react-select";
 import ReSelect from "@/components/reusable/ReSelect";
+import RootLayout from "@/layouts/RootLayout";
 
 const History = () => {
   return (
