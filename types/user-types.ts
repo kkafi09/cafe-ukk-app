@@ -4,5 +4,5 @@ export interface IUser {
   name: string;
   photo_profile: string;
   username: string;
-  role: string;
+  role: "MANAGER" | "ADMIN" | "KASIR";
 }

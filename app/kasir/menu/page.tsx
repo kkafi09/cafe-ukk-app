@@ -2,7 +2,7 @@ import CardMenu from "@/components/reusable/CardMenu";
 import RootLayout from "@/layouts/RootLayout";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import { IMenu } from "../../types/menu-types";
+import { IMenu } from "../../../types/menu-types";
 
 const getMenu = async (): Promise<IMenu[]> => {
   const token = cookies().get("jwtToken")?.value;
