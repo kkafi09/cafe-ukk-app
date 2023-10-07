@@ -30,6 +30,7 @@ const getMenu = async (): Promise<IMenu[]> => {
 
 const Menu = async () => {
   const dataMenu: IMenu[] = await getMenu();
+
   return (
     <RootLayout>
       <div className="h-screen bg-zinc-50 flex flex-col gap-y-6">

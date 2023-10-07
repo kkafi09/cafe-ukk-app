@@ -7,23 +7,9 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
-import { HiOutlinePrinter } from "react-icons/hi2";
-
-export const getTransaksi = async () => {
-  const token = cookies().get("jwtToken")?.value;
-  if (!token) return redirect("/login");
-
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/transaksi`, {
-    headers: {
-      Authorization: "Bearer " + token,
-    },
-  });
-  const result = await response.json();
-
-  return result.data;
-};
+import { ITransaksi } from "@/types/transaksi-types";
+import { HiOutlineCurrencyDollar, HiOutlinePrinter } from "react-icons/hi2";
+import { getTransaksi } from "../actions";
 
 async function TableHis() {
   const transaksiData = await getTransaksi();
@@ -41,11 +27,11 @@ async function TableHis() {
             <TableHead>Tanggal Transaksi</TableHead>
             <TableHead>No. Meja</TableHead>
             <TableHead>Total</TableHead>
-            <TableHead>Print</TableHead>
+            <TableHead>Actions</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {transaksiData.map((transaksi: any) => (
+          {transaksiData.map((transaksi: ITransaksi) => (
             <TableRow key={transaksi.id}>
               <TableCell className="font-medium">{transaksi.resi}</TableCell>
               <TableCell>{transaksi.nama_pelanggan}</TableCell>
@@ -53,8 +39,14 @@ async function TableHis() {
               <TableCell>{transaksi.status}</TableCell>
               <TableCell>{transaksi.tgl_transaksi}</TableCell>
               <TableCell>{transaksi.nomor_meja}</TableCell>
-              <TableCell className="text-xl cursor-pointer">
+              <TableCell>{transaksi.total_harga}</TableCell>
+              <TableCell className="text-xl cursor-pointer flex gap-2">
                 <HiOutlinePrinter />
+                {transaksi.status === "belum bayar" ? (
+                  <HiOutlineCurrencyDollar />
+                ) : (
+                  ""
+                )}
               </TableCell>
             </TableRow>
           ))}

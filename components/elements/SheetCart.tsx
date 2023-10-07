@@ -1,19 +1,20 @@
+import OrderMenu from "@/app/kasir/menu/fragments/OrderMenu";
 import Cart from "@/components/elements/Cart";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import {
   Sheet,
-  SheetClose,
   SheetContent,
   SheetDescription,
-  SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { IUser } from "@/types/user-types";
 
-export default function SheetCart() {
+interface Props {
+  user: IUser;
+}
+
+export default function SheetCart({ user }: Props) {
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -26,25 +27,7 @@ export default function SheetCart() {
             {"Pastikan pesanan sesuai dengan apa yang pelanggan inginkan!"}
           </SheetDescription>
         </SheetHeader>
-        <div className="grid gap-4 py-4">
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="name" className="text-right">
-              Nama Pelanggan
-            </Label>
-            <Input id="name" className="col-span-3" />
-          </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="username" className="text-right">
-              Username
-            </Label>
-            <Input id="username" className="col-span-3" />
-          </div>
-        </div>
-        <SheetFooter>
-          <SheetClose asChild>
-            <Button type="submit">Save changes</Button>
-          </SheetClose>
-        </SheetFooter>
+        <OrderMenu user={user} />
       </SheetContent>
     </Sheet>
   );
