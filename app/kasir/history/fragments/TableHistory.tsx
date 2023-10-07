@@ -7,68 +7,13 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { HiOutlinePrinter } from "react-icons/hi2";
+import { ITransaksi } from "@/types/transaksi-types";
+import { HiOutlineCurrencyDollar, HiOutlinePrinter } from "react-icons/hi2";
+import { getTransaksi } from "../actions";
 
-const invoices = [
-  {
-    invoice: "INV001",
-    paymentStatus: "Paid",
-    totalAmount: "Rp 25.000",
-    barangDibeli: "Es Kopi Susu Gula Aren",
-    namaPembeli: "Agung",
-    paymentMethod: "Credit Card",
-  },
-  {
-    invoice: "INV002",
-    paymentStatus: "Pending",
-    totalAmount: "Rp 18.000",
-    barangDibeli: "Es Kopi Susu Gula Aren",
-    namaPembeli: "Eko",
-    paymentMethod: "PayPal",
-  },
-  {
-    invoice: "INV003",
-    paymentStatus: "Unpaid",
-    totalAmount: "Rp 13.000",
-    barangDibeli: "Es Kopi Susu Gula Aren",
-    namaPembeli: "Supriadi",
-    paymentMethod: "Bank Transfer",
-  },
-  {
-    invoice: "INV004",
-    paymentStatus: "Paid",
-    totalAmount: "Rp 64.000",
-    barangDibeli: "Es Kopi Susu Gula Aren",
-    namaPembeli: "Bagas",
-    paymentMethod: "Credit Card",
-  },
-  {
-    invoice: "INV005",
-    paymentStatus: "Paid",
-    totalAmount: "Rp 37.000",
-    barangDibeli: "Es Kopi Susu Gula Aren",
-    namaPembeli: "Wahyu",
-    paymentMethod: "PayPal",
-  },
-  {
-    invoice: "INV006",
-    paymentStatus: "Pending",
-    totalAmount: "Rp 21.000",
-    barangDibeli: "Es Kopi Susu Gula Aren",
-    namaPembeli: "Sugeng",
-    paymentMethod: "Bank Transfer",
-  },
-  {
-    invoice: "INV007",
-    paymentStatus: "Unpaid",
-    totalAmount: "Rp 56.000",
-    barangDibeli: "Es Kopi Susu Gula Aren",
-    namaPembeli: "Saiful",
-    paymentMethod: "Credit Card",
-  },
-];
+async function TableHis() {
+  const transaksiData = await getTransaksi();
 
-export default function TableHis() {
   return (
     <div className="mx-auto">
       <Table>
@@ -79,23 +24,29 @@ export default function TableHis() {
             <TableHead>Nama Pembeli</TableHead>
             <TableHead>Nama Kasir</TableHead>
             <TableHead>Status</TableHead>
-            <TableHead>Tanggal</TableHead>
+            <TableHead>Tanggal Transaksi</TableHead>
             <TableHead>No. Meja</TableHead>
             <TableHead>Total</TableHead>
-            <TableHead>Print</TableHead>
+            <TableHead>Actions</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {invoices.map((invoice) => (
-            <TableRow key={invoice.invoice}>
-              <TableCell className="font-medium">{invoice.invoice}</TableCell>
-              <TableCell>{invoice.paymentStatus}</TableCell>
-              <TableCell>{invoice.barangDibeli}</TableCell>
-              <TableCell>{invoice.paymentMethod}</TableCell>
-              <TableCell>{invoice.namaPembeli}</TableCell>
-              <TableCell>{invoice.totalAmount}</TableCell>
-              <TableCell className="text-xl cursor-pointer">
+          {transaksiData.map((transaksi: ITransaksi) => (
+            <TableRow key={transaksi.id}>
+              <TableCell className="font-medium">{transaksi.resi}</TableCell>
+              <TableCell>{transaksi.nama_pelanggan}</TableCell>
+              <TableCell>{transaksi.nama_kasir}</TableCell>
+              <TableCell>{transaksi.status}</TableCell>
+              <TableCell>{transaksi.tgl_transaksi}</TableCell>
+              <TableCell>{transaksi.nomor_meja}</TableCell>
+              <TableCell>{transaksi.total_harga}</TableCell>
+              <TableCell className="text-xl cursor-pointer flex gap-2">
                 <HiOutlinePrinter />
+                {transaksi.status === "belum bayar" ? (
+                  <HiOutlineCurrencyDollar />
+                ) : (
+                  ""
+                )}
               </TableCell>
             </TableRow>
           ))}
@@ -104,3 +55,5 @@ export default function TableHis() {
     </div>
   );
 }
+
+export default TableHis;

@@ -16,7 +16,6 @@ const CardMenu: React.FC<Props> = ({ menu }: Props) => {
     cartItems,
   } = useCoffeeCart();
   const quantity = getItemQuantity(menu.id);
-  console.log(cartItems);
 
   const formatCurrency = (amount: number) => {
     const formattedAmount = new Intl.NumberFormat("id-ID", {

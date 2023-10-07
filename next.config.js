@@ -1,8 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    serverActions: true,
-  },
   images: {
     remotePatterns: [
       {
@@ -12,7 +9,8 @@ const nextConfig = {
     ],
   },
   env: {
-    NEXT_PUBLIC_API_URL: "https://api-cafe.m3sra-kediri.my.id/v1",
+    // NEXT_PUBLIC_API_URL: "https://api-cafe.m3sra-kediri.my.id/v1",
+    NEXT_PUBLIC_API_URL: "http://localhost:4000/v1",
   },
 };
 

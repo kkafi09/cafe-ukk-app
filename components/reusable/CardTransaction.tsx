@@ -1,15 +1,13 @@
-import React from "react";
-
 interface CardTransactionProps {
-  nomor_meja: string;
+  nomor_meja: number;
   nama_pelanggan: string;
-  total_bayar: string;
+  total_harga: number;
 }
 
 const CardTransaction = ({
   nomor_meja,
   nama_pelanggan,
-  total_bayar,
+  total_harga,
 }: CardTransactionProps) => {
   return (
     <div className="w-full flex p-4 gap-4 items-center bg-white shadow mt-2 rounded hover:shadow-lg duration-200 cursor-pointer">
@@ -20,7 +18,7 @@ const CardTransaction = ({
         <h2 className="text-xl font-semibold text-zinc-800">
           {nama_pelanggan}
         </h2>
-        <p className="text-lg font-normal text-zinc-800">Rp {total_bayar}</p>
+        <p className="text-lg font-normal text-zinc-800">Rp {total_harga}</p>
       </div>
     </div>
   );
