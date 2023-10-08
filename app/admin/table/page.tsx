@@ -1,8 +1,18 @@
-import React from "react";
+import RootLayout from "@/layouts/RootLayout";
+import Link from "next/link";
+import TableMeja from "./fragments/TableMeja";
 
-const table = () => {
-  return <div>crud table -edit -delete -add</div>;
+const TablePage = () => {
+  return (
+    <>
+      <RootLayout>
+        <Link href={"/admin/table/add"}>
+          <span className="text-orange-500">Tambah Meja</span>
+        </Link>
+        <TableMeja />
+      </RootLayout>
+    </>
+  );
 };
 
-export default table;
- 
+export default TablePage;

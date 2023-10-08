@@ -37,12 +37,12 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
   }
 
   return (
-    <div className="flex h-screen overflow-hidden relative top-0">
+    <div className="flex min-h-screen overflow-hidden relative top-0">
       <SheetCart user={userAuth} />
       <Sidebar role={userAuth.role} />
       <div className="flex-1 flex overflow-hidden flex-col w-full">
         <Header user={userAuth} />
-        <div className="px-8 overflow-y-scroll">{children}</div>
+        <div className="px-8 py-4 overflow-y-hidden">{children}</div>
       </div>
     </div>
   );
