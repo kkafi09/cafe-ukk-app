@@ -8,14 +8,14 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { ITransaksi } from "@/types/transaksi-types";
-import { HiOutlineCurrencyDollar, HiOutlinePrinter } from "react-icons/hi2";
 import { getTransaksi } from "../actions";
+import PaymentButton from "./PaymentButton";
 
 async function TableHis() {
   const transaksiData = await getTransaksi();
 
   return (
-    <div className="mx-auto">
+    <div className="mx-auto h-full">
       <Table>
         <TableCaption>A list of your recent invoices.</TableCaption>
         <TableHeader>
@@ -41,9 +41,11 @@ async function TableHis() {
               <TableCell>{transaksi.nomor_meja}</TableCell>
               <TableCell>{transaksi.total_harga}</TableCell>
               <TableCell className="text-xl cursor-pointer flex gap-2">
-                <HiOutlinePrinter />
+                {/* <Button variant={"outline"}>
+                  <HiOutlinePrinter />
+                </Button> */}
                 {transaksi.status === "belum bayar" ? (
-                  <HiOutlineCurrencyDollar />
+                  <PaymentButton id={transaksi.id} />
                 ) : (
                   ""
                 )}

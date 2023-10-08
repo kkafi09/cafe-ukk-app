@@ -3,6 +3,8 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useCoffeeCart } from "@/context/CartContext";
+import { IMeja } from "@/types/meja-types";
+import { IMenu } from "@/types/menu-types";
 import { IUser } from "@/types/user-types";
 import { api } from "@/utils/api";
 import { Label } from "@radix-ui/react-label";
@@ -19,8 +21,8 @@ const OrderMenu = ({ user }: Props) => {
   const { cartItems } = useCoffeeCart();
   const router = useRouter();
 
-  const [meja, setMeja] = React.useState<any[] | null>(null);
-  const [menu, setMenu] = React.useState<any[] | null>(null);
+  const [meja, setMeja] = React.useState<IMeja[] | null>(null);
+  const [menu, setMenu] = React.useState<IMenu[] | null>(null);
   const [dataOrder, setDataOrder] = React.useState({
     nama_pelanggan: "",
     status: "belum bayar",
@@ -49,6 +51,7 @@ const OrderMenu = ({ user }: Props) => {
         .then((response) => {
           if (response.status === 201) {
             toast.success("Berhasil melakukan transaksi");
+            router.refresh();
             router.push("/kasir/history");
           } else {
             toast.error("Gagal menambah pesanan");
@@ -98,7 +101,7 @@ const OrderMenu = ({ user }: Props) => {
               className="bg-white p-4 rounded-md shadow-md flex flex-col justify-between"
             >
               <div className="mb-4">
-                <p className="text-lg font-semibold">{menuItem.name}</p>
+                <p className="text-lg font-semibold">{menuItem.nama_menu}</p>
                 <p className="text-gray-600">{menuItem.deskripsi}</p>
               </div>
               <div className="flex justify-between items-center">
@@ -137,8 +140,8 @@ const OrderMenu = ({ user }: Props) => {
               Pilih Meja
             </option>
             {meja &&
-              meja?.map((m) => (
-                <option key={m.id} value={parseInt(m.id)}>
+              meja.map((m) => (
+                <option key={m.id} value={m.id}>
                   {m.nomor_meja}
                 </option>
               ))}

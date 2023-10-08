@@ -1,9 +1,18 @@
-import React from 'react'
+import RootLayout from "@/layouts/RootLayout";
+import Link from "next/link";
+import TableUser from "./fragments/TableUser";
 
-const user = () => {
+const TablePage = () => {
   return (
-    <div>crud user -create -update -delete</div>
-  )
-}
+    <>
+      <RootLayout>
+        <Link href={"/admin/user/add"}>
+          <span className="text-orange-500">Tambah User</span>
+        </Link>
+        <TableUser />
+      </RootLayout>
+    </>
+  );
+};
 
-export default user
+export default TablePage;
