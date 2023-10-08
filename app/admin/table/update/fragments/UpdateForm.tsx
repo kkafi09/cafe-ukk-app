@@ -65,9 +65,9 @@ const UpdateForm = ({ mejaId }: { mejaId: number }) => {
   };
 
   return (
-    <div className="grid grid-cols-1 gap-4">
-      <form onSubmit={handleSubmit}>
-        <div className="grid grid-cols-1 items-center gap-4">
+    <div className=" gap-4 flex justify-center items-center pt-24">
+      <form onSubmit={handleSubmit} className="w-full mx-auto max-w-sm">
+        <div className="grid grid-cols-1 mb-4  items-center gap-4">
           <Label htmlFor="nomor_meja" className="text-left">
             Nomor Meja
           </Label>
@@ -80,7 +80,7 @@ const UpdateForm = ({ mejaId }: { mejaId: number }) => {
             onChange={handleChange}
           />
         </div>
-        <div className="grid grid-cols-1 items-center gap-4">
+        <div className="grid grid-cols-1 mb-4  items-center gap-4">
           <Label htmlFor="status" className="text-left">
             Status
           </Label>
@@ -95,7 +95,9 @@ const UpdateForm = ({ mejaId }: { mejaId: number }) => {
             <option value="terisi">Terisi</option>
           </select>
         </div>
-        <Button type="submit">Perbarui Meja</Button>
+        <Button type="submit" className="w-full max-w-sm">
+          Perbarui Meja
+        </Button>
       </form>
     </div>
   );

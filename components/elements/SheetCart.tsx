@@ -16,19 +16,19 @@ interface Props {
 
 export default function SheetCart({ user }: Props) {
   return (
-    <Sheet>
-      <SheetTrigger asChild>
-        <Cart />
-      </SheetTrigger>
-      <SheetContent>
-        <SheetHeader>
-          <SheetTitle>Pesanan</SheetTitle>
-          <SheetDescription>
-            {"Pastikan pesanan sesuai dengan apa yang pelanggan inginkan!"}
-          </SheetDescription>
-        </SheetHeader>
-        <OrderMenu user={user} />
-      </SheetContent>
-    </Sheet>
+      <Sheet>
+        <SheetTrigger asChild>
+          <Cart />
+        </SheetTrigger>
+        <SheetContent>
+          <SheetHeader>
+            <SheetTitle>Pesanan</SheetTitle>
+            <SheetDescription>
+              {"Pastikan pesanan sesuai dengan apa yang pelanggan inginkan!"}
+            </SheetDescription>
+          </SheetHeader>
+          <OrderMenu user={user} />
+        </SheetContent>
+      </Sheet>
   );
 }

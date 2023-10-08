@@ -29,7 +29,7 @@ const CardMenu: React.FC<Props> = ({ menu }: Props) => {
 
   return (
     <div
-      className="w-full flex flex-col rounded-md p-4 bg-white shadow-md h-fit"
+      className="w-full flex flex-col max-w-[16rem] h-96 rounded-md p-4 bg-white shadow-md "
       key={menu.id}
     >
       <div className="flex flex-col gap-x-4">
@@ -42,11 +42,11 @@ const CardMenu: React.FC<Props> = ({ menu }: Props) => {
             alt={menu.nama_menu}
             width={200}
             height={200}
-            className="w-full rounded h-36"
+            className="w-full rounded h-36 object-cover"
           />
         </div>
         <div className="flex flex-col w-full text-center gap-1 mt-2">
-          <h3 className="text-2xl font-semibold text-zinc-800">
+          <h3 className="text-xl line-clamp-2 h-16 font-semibold text-zinc-800">
             {menu.nama_menu}
           </h3>
           <p className="text-base font-normal text-zinc-600">

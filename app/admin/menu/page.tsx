@@ -5,9 +5,15 @@ import TableMenu from "./fragments/TableMenu";
 const Menu = () => {
   return (
     <RootLayout>
-      <Link href={"/admin/menu/add"}>
-        <span className="text-orange-500">Tambah Menu</span>
-      </Link>
+      <div className="w-full h-20 bg-white fixed text-xs  z-50">
+        <Link
+          href={"/admin/menu/add"}
+          className=" font-semibold rounded-md py-3 text-white  text-primary uppercase  w-fit px-10 bg-primary "
+        >
+          Tambah menu
+        </Link>
+      </div>
+
       <TableMenu />
     </RootLayout>
   );

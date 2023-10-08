@@ -18,7 +18,7 @@ async function TableMenu() {
   console.log(menuData);
 
   return (
-    <div className="mx-auto h-full">
+    <div className="mx-auto h-full mt-16">
       <Table>
         <TableCaption>A list of your recent invoices.</TableCaption>
         <TableHeader>
@@ -47,10 +47,13 @@ async function TableMenu() {
               </TableCell>
               <TableCell>{menu.nama_menu}</TableCell>
               <TableCell>{menu.jenis}</TableCell>
-              <TableCell>{menu.deskripsi}</TableCell>
+              <TableCell className="cursor-pointer">{menu.deskripsi}</TableCell>
               <TableCell>{menu.harga}</TableCell>
-              <TableCell className="text-xl cursor-pointer flex gap-2">
-                <Link href={"/admin/menu/update?menuId=" + menu.id}>
+              <TableCell >
+                <Link
+                  href={"/admin/menu/update?menuId=" + menu.id}
+                  className="text-end w-full mx-auto text-xl text-primary cursor-pointer"
+                >
                   <HiPencilSquare />
                 </Link>
               </TableCell>

@@ -78,63 +78,66 @@ const UpdateForm = ({ userId }: { userId: number }) => {
   };
 
   return (
-    <div className="grid grid-cols-1 gap-4">
+    <div className=" gap-4 flex justify-center items-center pt-20">
       <form onSubmit={handleSubmit}>
-        <div className="grid grid-cols-1 items-center gap-4">
-          <Label htmlFor="name" className="text-left">
-            Name
-          </Label>
-          <Input
-            id="name"
-            className="col-span-3"
-            name="name"
-            type="text"
-            value={userData.name}
-            onChange={handleChange}
-          />
+        <div className="w-full mx-auto grid grid-cols-2 gap-x-8">
+          <div className="grid grid-cols-1 mb-4  items-center gap-4">
+            <Label htmlFor="name" className="text-left">
+              Name
+            </Label>
+            <Input
+              id="name"
+              className="col-span-3"
+              name="name"
+              type="text"
+              value={userData.name}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="grid grid-cols-1 mb-4  items-center gap-4">
+            <Label htmlFor="photo_profile" className="text-left">
+              Photo Profile
+            </Label>
+            <Input
+              id="photo_profile"
+              className="col-span-3"
+              name="photo_profile"
+              type="file"
+              onChange={(e) => handleFileChange(e.target.files)}
+            />
+          </div>
+          <div className="grid grid-cols-1 mb-4  items-center gap-4">
+            <Label htmlFor="username" className="text-left">
+              Username
+            </Label>
+            <Input
+              id="username"
+              className="col-span-3"
+              name="username"
+              type="text"
+              value={userData.username}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="grid grid-cols-1 mb-4  items-center gap-4">
+            <Label htmlFor="role" className="text-left">
+              Role
+            </Label>
+            <select
+              id="role"
+              className="col-span-3 px-4 py-2 border rounded-md outline-none focus:outline-orange-500"
+              name="role"
+              value={userData.role}
+              onChange={handleChange}
+            >
+              <option value="MANAGER">Manager</option>
+              <option value="ADMIN">Admin</option>
+              <option value="KASIR">Kasir</option>
+            </select>
+          </div>
         </div>
-        <div className="grid grid-cols-1 items-center gap-4">
-          <Label htmlFor="photo_profile" className="text-left">
-            Photo Profile
-          </Label>
-          <Input
-            id="photo_profile"
-            className="col-span-3"
-            name="photo_profile"
-            type="file"
-            onChange={(e) => handleFileChange(e.target.files)}
-          />
-        </div>
-        <div className="grid grid-cols-1 items-center gap-4">
-          <Label htmlFor="username" className="text-left">
-            Username
-          </Label>
-          <Input
-            id="username"
-            className="col-span-3"
-            name="username"
-            type="text"
-            value={userData.username}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="grid grid-cols-1 items-center gap-4">
-          <Label htmlFor="role" className="text-left">
-            Role
-          </Label>
-          <select
-            id="role"
-            className="col-span-3 px-4 py-2 border rounded-md outline-none focus:outline-orange-500"
-            name="role"
-            value={userData.role}
-            onChange={handleChange}
-          >
-            <option value="MANAGER">Manager</option>
-            <option value="ADMIN">Admin</option>
-            <option value="KASIR">Kasir</option>
-          </select>
-        </div>
-        <Button type="submit">Perbarui Meja</Button>
+
+        <Button type="submit" className="w-full mt-10">Perbarui Meja</Button>
       </form>
     </div>
   );

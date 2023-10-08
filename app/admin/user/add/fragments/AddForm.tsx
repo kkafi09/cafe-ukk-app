@@ -47,33 +47,35 @@ const AddForm = () => {
   };
 
   return (
-    <div className="grid grid-cols-1 gap-4">
+    <div className=" gap-4 flex justify-center items-center pt-20">
       <form onSubmit={handleSubmit}>
-        <div className="grid grid-cols-1 items-center gap-4">
-          <Label htmlFor="name" className="text-left">
-            Name
-          </Label>
-          <Input
-            id="name"
-            className="col-span-3"
-            name="name"
-            type="text"
-            onChange={handleChange}
-          />
+        <div className="w-full mx-auto grid grid-cols-2 gap-x-8">
+          <div className="grid grid-cols-1 mb-4  items-center gap-4">
+            <Label htmlFor="name" className="text-left">
+              Name
+            </Label>
+            <Input
+              id="name"
+              className="col-span-3"
+              name="name"
+              type="text"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="grid grid-cols-1 mb-4  items-center gap-4">
+            <Label htmlFor="username" className="text-left">
+              Username
+            </Label>
+            <Input
+              id="username"
+              className="col-span-3"
+              name="username"
+              type="text"
+              onChange={handleChange}
+            />
+          </div>
         </div>
-        <div className="grid grid-cols-1 items-center gap-4">
-          <Label htmlFor="username" className="text-left">
-            Username
-          </Label>
-          <Input
-            id="username"
-            className="col-span-3"
-            name="username"
-            type="text"
-            onChange={handleChange}
-          />
-        </div>
-        <div className="grid grid-cols-1 items-center gap-4">
+        <div className="grid grid-cols-1 mb-4  items-center gap-4">
           <Label htmlFor="password" className="text-left">
             Password
           </Label>
@@ -85,7 +87,7 @@ const AddForm = () => {
             onChange={handleChange}
           />
         </div>
-        <div className="grid grid-cols-1 items-center gap-4">
+        <div className="grid grid-cols-1 mb-4  items-center gap-4">
           <Label htmlFor="role" className="text-left">
             Role
           </Label>
@@ -101,7 +103,10 @@ const AddForm = () => {
             <option value="KASIR">Kasir</option>
           </select>
         </div>
-        <Button type="submit">Tambah Meja</Button>
+
+        <Button type="submit" className="w-full mt-10">
+          Tambah Meja
+        </Button>
       </form>
     </div>
   );

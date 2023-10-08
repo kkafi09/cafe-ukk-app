@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { api } from "@/utils/api";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import * as React from "react";
 import { toast } from "react-toastify";
@@ -83,66 +84,68 @@ const UpdateForm = ({ menuId }: { menuId: number }) => {
   };
 
   return (
-    <div className="grid grid-cols-1 gap-4">
+    <div className=" gap-4 flex justify-center items-center pt-20">
       <form onSubmit={handleSubmit}>
-        <div className="grid grid-cols-1 items-center gap-4">
-          <Label htmlFor="nama_menu" className="text-left">
-            Nama Pelanggan
-          </Label>
-          <Input
-            id="nama_menu"
-            className="col-span-3"
-            name="nama_menu"
-            value={menuData.nama_menu}
-            onChange={handleChange}
-          />
+        <div className="w-full mx-auto grid grid-cols-2 gap-x-8">
+          <div className="grid grid-cols-1 mb-4  items-center gap-4">
+            <Label htmlFor="nama_menu" className="text-left">
+              Nama Pelanggan
+            </Label>
+            <Input
+              id="nama_menu"
+              className="col-span-3"
+              name="nama_menu"
+              value={menuData.nama_menu}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="grid grid-cols-1 mb-4  items-center gap-4">
+            <Label htmlFor="jenis" className="text-left">
+              Jenis Menu
+            </Label>
+            <select
+              id="jenis"
+              className="col-span-3 px-4 py-2 border rounded-md outline-none focus:outline-orange-500"
+              name="jenis"
+              value={menuData.jenis}
+              onChange={handleChange}
+            >
+              <option value="" disabled>
+                Pilih Jenis
+              </option>
+              <option value="makanan" selected>
+                Makanan
+              </option>
+              <option value="minuman">Minuman</option>
+            </select>
+          </div>
+          <div className="grid grid-cols-1 mb-4  items-center gap-4">
+            <Label htmlFor="deskripsi" className="text-left">
+              Deskripsi
+            </Label>
+            <Input
+              id="deskripsi"
+              className="col-span-3"
+              name="deskripsi"
+              value={menuData.deskripsi}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="grid grid-cols-1 mb-4  items-center gap-4">
+            <Label htmlFor="harga" className="text-left">
+              Harga
+            </Label>
+            <Input
+              id="harga"
+              className="col-span-3"
+              name="harga"
+              type="number"
+              value={menuData.harga}
+              onChange={handleChange}
+            />
+          </div>
         </div>
-        <div className="grid grid-cols-1 items-center gap-4">
-          <Label htmlFor="jenis" className="text-left">
-            Jenis Menu
-          </Label>
-          <select
-            id="jenis"
-            className="col-span-3 px-4 py-2 border rounded-md outline-none focus:outline-orange-500"
-            name="jenis"
-            value={menuData.jenis}
-            onChange={handleChange}
-          >
-            <option value="" disabled>
-              Pilih Jenis
-            </option>
-            <option value="makanan" selected>
-              Makanan
-            </option>
-            <option value="minuman">Minuman</option>
-          </select>
-        </div>
-        <div className="grid grid-cols-1 items-center gap-4">
-          <Label htmlFor="deskripsi" className="text-left">
-            Deskripsi
-          </Label>
-          <Input
-            id="deskripsi"
-            className="col-span-3"
-            name="deskripsi"
-            value={menuData.deskripsi}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="grid grid-cols-1 items-center gap-4">
-          <Label htmlFor="harga" className="text-left">
-            Harga
-          </Label>
-          <Input
-            id="harga"
-            className="col-span-3"
-            name="harga"
-            type="number"
-            value={menuData.harga}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="grid grid-cols-1 items-center gap-4">
+        <div className="grid grid-cols-1 mb-4  items-center gap-4">
           <Label htmlFor="gambar" className="text-left">
             Gambar
           </Label>
@@ -154,7 +157,9 @@ const UpdateForm = ({ menuId }: { menuId: number }) => {
             onChange={(e) => handleFileChange(e.target.files)}
           />
         </div>
-        <Button type="submit">Perbarui Menu</Button>
+        <Button type="submit" className="w-full mt-10">
+          Perbarui Menu
+        </Button>
       </form>
     </div>
   );

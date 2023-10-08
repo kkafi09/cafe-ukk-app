@@ -45,9 +45,9 @@ const AddForm = () => {
   };
 
   return (
-    <div className="grid grid-cols-1 gap-4">
+    <div className=" gap-4 flex justify-center items-center pt-20">
       <form onSubmit={handleSubmit}>
-        <div className="grid grid-cols-1 items-center gap-4">
+        <div className="grid grid-cols-1 mb-4  items-center gap-4">
           <Label htmlFor="nomor_meja" className="text-left">
             Nomor Meja
           </Label>
@@ -59,7 +59,7 @@ const AddForm = () => {
             onChange={handleChange}
           />
         </div>
-        <Button type="submit">Tambah meja</Button>
+        <Button type="submit" className="w-full mt-10">Tambah meja</Button>
       </form>
     </div>
   );

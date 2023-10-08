@@ -50,11 +50,11 @@ const Login = () => {
   return (
     <main className="min-h-screen flex flex-col justify-center items-center">
       <div className="h-full px-8 py-14 bg-white rounded">
-        <div className="text-center flex flex-col gap-y-1">
-          <h3 className="font-bold text-2xl text-zinc-800">
+        <div className="text-center flex mb-12 flex-col gap-y-1">
+          <h3 className="font-bold text-2xl  text-zinc-800">
             Login With Your Acoount
           </h3>
-          <p className="font-normal text-base text-zinc-600">
+          <p className="font-normal text-xs text-zinc-600">
             Enter your username and password correctly
           </p>
         </div>
@@ -86,6 +86,7 @@ const Login = () => {
           </Button>
         </form>
       </div>
+      <p>Develop on <span className="text-red-500">2 DAY</span></p>
     </main>
   );
 };

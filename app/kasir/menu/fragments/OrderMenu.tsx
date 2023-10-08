@@ -86,8 +86,8 @@ const OrderMenu = ({ user }: Props) => {
   }, []);
 
   return (
-    <div className="grid gap-4 py-4">
-      <div className="grid grid-cols-1 gap-4">
+    <div className="grid gap-4 py-4 h-[80vh] overflow-y-scroll">
+      <div className="grid grid-cols-1 gap-4 mr-4">
         {cartItems.map((item) => {
           const menuItem = menu?.find((m) => m.id === item.menuId);
 
@@ -112,11 +112,9 @@ const OrderMenu = ({ user }: Props) => {
           );
         })}
       </div>
-      <form onSubmit={handleSubmit}>
-        <div className="grid grid-cols-4 items-center gap-4">
-          <Label htmlFor="name" className="text-left">
-            Nama Pelanggan
-          </Label>
+      <form onSubmit={handleSubmit} className="mx-2">
+        <div className="gap-4 flex mb-4  flex-col justify-start items-start">
+          <Label htmlFor="name">Nama Pelanggan</Label>
           <Input
             id="name"
             className="col-span-3"
@@ -125,13 +123,11 @@ const OrderMenu = ({ user }: Props) => {
             onChange={handleChange}
           />
         </div>
-        <div className="grid grid-cols-4 items-center gap-4">
-          <Label htmlFor="meja" className="text-left">
-            Pilih Meja
-          </Label>
+        <div className="gap-4 flex flex-col justify-start mb-4 items-start">
+          <Label htmlFor="meja">Pilih Meja</Label>
           <select
             id="meja"
-            className="col-span-3 px-4 py-2 border rounded-md outline-none focus:outline-orange-500"
+            className=" w-full px-4 py-2 border rounded-md outline-none focus:outline-orange-500 "
             name="mejaId"
             value={dataOrder.mejaId || ""}
             onChange={handleChange}

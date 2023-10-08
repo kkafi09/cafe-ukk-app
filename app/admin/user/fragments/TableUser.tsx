@@ -17,7 +17,7 @@ async function TableUser() {
   const userData = await getUser();
 
   return (
-    <div className="mx-auto h-full">
+    <div className="mx-auto h-full mt-16">
       <Table>
         <TableCaption>A list of your recent invoices.</TableCaption>
         <TableHeader>
@@ -48,8 +48,11 @@ async function TableUser() {
               <TableCell>{user.name}</TableCell>
               <TableCell>{user.username}</TableCell>
               <TableCell>{user.role}</TableCell>
-              <TableCell className="text-xl cursor-pointer flex gap-2">
-                <Link href={"/admin/user/update?userId=" + user.id}>
+              <TableCell className="text-xl cursor-pointer text-primary">
+                <Link
+                  href={"/admin/user/update?userId=" + user.id}
+                  className="mx-auto"
+                >
                   <HiPencilSquare />
                 </Link>
               </TableCell>

@@ -41,7 +41,7 @@ const Sidebar = ({ role }: { role: IRole }) => {
     <div
       className={` ${
         open ? "w-60" : "w-20 "
-      } bg-white h-screen p-5 shadow pt-8 relative top-0 flex flex-col overflow-hidden duration-300`}
+      } bg-white h-screen p-5 fixed  shadow pt-8 z-20   flex flex-col overflow-hidden duration-300`}
     >
       <div className="flex gap-x-4 items-center">
         <h1
@@ -76,11 +76,11 @@ const Sidebar = ({ role }: { role: IRole }) => {
       </ul>
       <Button
         variant={"ghost"}
-        className="text-zinc-800 hover:bg-light-white text-base items-center gap-x-4 mt-20"
+        className="text-zinc-800 hover:border-red-400 gap-1 hover:border hover:gap-5  text-base items-center gap-x-4 mt-20"
         onClick={() => handleLogout()}
       >
         <ReactSVG src={`/assets/icons/logout.svg`} />
-        <span className={`${!open && "hidden"} duration-200`}>Logout</span>
+        <span className={`${!open && "hidden"} duration-100`}>Logout</span>
       </Button>
     </div>
   );

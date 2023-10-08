@@ -16,14 +16,14 @@ async function TableMeja() {
   const mejaData = await getTable();
 
   return (
-    <div className="mx-auto h-full">
+    <div className="mx-auto h-full mt-16">
       <Table>
         <TableCaption>A list of your recent invoices.</TableCaption>
         <TableHeader>
           <TableRow>
             <TableHead>Nomor Meja</TableHead>
             <TableHead>Status</TableHead>
-            <TableHead>Actions</TableHead>
+            <TableHead className="text-end">Actions</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -31,7 +31,7 @@ async function TableMeja() {
             <TableRow key={meja.id}>
               <TableCell>{meja.nomor_meja}</TableCell>
               <TableCell>{meja.status}</TableCell>
-              <TableCell className="text-xl cursor-pointer flex gap-2">
+              <TableCell className="text-xl cursor-pointer flex gap-2 justify-end pr-8 text-primary">
                 <Link href={"/admin/table/update?mejaId=" + meja.id}>
                   <HiPencilSquare />
                 </Link>

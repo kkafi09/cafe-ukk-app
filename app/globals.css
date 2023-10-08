@@ -48,3 +48,38 @@
     --ring: 20.5 90.2% 48.2%;
   }
 }
+
+/* Untuk Webkit Browsers seperti Chrome/Safari */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #ffa023;
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #ffb812;
+}
+
+/* Untuk Firefox Browsers */
+/* Harus menggunakan pseudo-element ::-webkit-scrollbar untuk Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #ffa023 #f1f1f1;
+}
+
+*::-webkit-scrollbar {
+    width: 4px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #ffa023;
+    border-radius: 6px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background-color: #ffb812;
+}
+
