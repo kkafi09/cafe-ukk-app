@@ -41,7 +41,7 @@ const Sidebar = ({ role }: { role: IRole }) => {
     <div
       className={` ${
         open ? "w-60" : "w-20 "
-      } bg-white h-screen p-5 shadow pt-8 relative top-0 overflow-hidden duration-300`}
+      } bg-white h-screen p-5 shadow pt-8 relative top-0 flex flex-col overflow-hidden duration-300`}
     >
       <div className="flex gap-x-4 items-center">
         <h1
@@ -58,7 +58,7 @@ const Sidebar = ({ role }: { role: IRole }) => {
           Coffee
         </h1>
       </div>
-      <ul className="pt-6 flex flex-col gap-y-2">
+      <ul className="pt-6 flex flex-col gap-y-2 h-full">
         {Menus?.map((Menu, index) => (
           <Link
             href={Menu.href}
@@ -73,15 +73,15 @@ const Sidebar = ({ role }: { role: IRole }) => {
             </span>
           </Link>
         ))}
-        <Button
-          variant={"ghost"}
-          className="text-zinc-800 hover:bg-light-white text-base items-center gap-x-4 mt-20"
-          onClick={() => handleLogout()}
-        >
-          <ReactSVG src={`/assets/icons/logout.svg`} />
-          <span className={`${!open && "hidden"} duration-200`}>Logout</span>
-        </Button>
       </ul>
+      <Button
+        variant={"ghost"}
+        className="text-zinc-800 hover:bg-light-white text-base items-center gap-x-4 mt-20"
+        onClick={() => handleLogout()}
+      >
+        <ReactSVG src={`/assets/icons/logout.svg`} />
+        <span className={`${!open && "hidden"} duration-200`}>Logout</span>
+      </Button>
     </div>
   );
 };

@@ -8,7 +8,11 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { ITransaksi } from "@/types/transaksi-types";
-import { HiEllipsisVertical, HiOutlineCurrencyDollar, HiOutlinePrinter } from "react-icons/hi2";
+import {
+  HiOutlineCurrencyDollar,
+  HiOutlinePrinter,
+  HiEllipsisVertical,
+} from "react-icons/hi2";
 import { getTransaksi } from "../actions";
 
 async function TableHis() {
@@ -50,7 +54,7 @@ async function TableHis() {
                 )}
               </TableCell>
               <TableCell className="w-2 cursor-pointer hover:bg-zinc-100">
-                <HiEllipsisVertical/>
+                <HiEllipsisVertical />
               </TableCell>
             </TableRow>
           ))}
