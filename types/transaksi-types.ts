@@ -7,4 +7,11 @@ export interface ITransaksi {
   tgl_transaksi: string;
   nomor_meja: number;
   total_harga: number;
+  DetailTransaksi?: IDetailTransaksi[];
+}
+
+export interface IDetailTransaksi {
+  harga: number;
+  jumlah: number;
+  nama_menu: string;
 }

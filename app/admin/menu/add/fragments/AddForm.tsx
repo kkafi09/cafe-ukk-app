@@ -44,12 +44,6 @@ const AddForm = () => {
         menuForm.append("gambar", gambar[0]);
       }
 
-      console.log("nama_menu " + menuForm.get("nama_menu"));
-      console.log("jenis " + menuForm.get("jenis"));
-      console.log("deskripsi " + menuForm.get("deskripsi"));
-      console.log("harga " + menuForm.get("harga"));
-      console.log("gambar " + menuForm.get("gambar"));
-
       await api
         .post(`${process.env.NEXT_PUBLIC_API_URL}/menu`, menuForm)
         .then((response) => {

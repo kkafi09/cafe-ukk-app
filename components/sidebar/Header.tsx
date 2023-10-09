@@ -17,11 +17,15 @@ const Header = ({ user }: Props) => {
           alt=""
           width={100}
           height={100}
-          className="rounded-full w-12"
+          className="rounded-full w-12 h-12"
         />
         <div className="flex flex-col">
-          <h6 className="text-sm uppercase font-normal text-zinc-900">{user.name}</h6>
-          <p className="text-xs italic -mt-1 font-medium text-zinc-400">{user.role}</p>
+          <h6 className="text-sm uppercase font-normal text-zinc-900">
+            {user.name}
+          </h6>
+          <p className="text-xs italic -mt-1 font-medium text-zinc-400">
+            {user.role}
+          </p>
         </div>
       </div>
     </div>

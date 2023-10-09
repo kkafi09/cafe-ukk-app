@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { api } from "@/utils/api";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import * as React from "react";
 import { toast } from "react-toastify";
@@ -27,7 +26,7 @@ const UpdateForm = ({ menuId }: { menuId: number }) => {
         const existingMenuData = response.data.data;
         setMenuData(existingMenuData);
       } catch (error) {
-        console.error("Error fetching menu data:", error);
+        toast.error("Gagal mengambil data menu");
       }
     };
 
@@ -60,12 +59,6 @@ const UpdateForm = ({ menuId }: { menuId: number }) => {
       if (gambar) {
         menuForm.append("gambar", gambar[0]);
       }
-
-      console.log("nama_menu " + menuForm.get("nama_menu"));
-      console.log("jenis " + menuForm.get("jenis"));
-      console.log("deskripsi " + menuForm.get("deskripsi"));
-      console.log("harga " + menuForm.get("harga"));
-      console.log("gambar " + menuForm.get("gambar"));
 
       await api
         .put(`${process.env.NEXT_PUBLIC_API_URL}/menu/${menuId}`, menuForm)

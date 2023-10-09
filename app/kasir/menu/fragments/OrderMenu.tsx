@@ -25,7 +25,7 @@ const OrderMenu = ({ user }: Props) => {
   const [menu, setMenu] = React.useState<IMenu[] | null>(null);
   const [dataOrder, setDataOrder] = React.useState({
     nama_pelanggan: "",
-    status: "belum bayar",
+    status: "belum-lunas",
     tgl_transaksi: new Date().toISOString().split("T")[0],
     userId: user.id,
     mejaId: null,
@@ -113,7 +113,7 @@ const OrderMenu = ({ user }: Props) => {
         })}
       </div>
       <form onSubmit={handleSubmit} className="mx-2">
-        <div className="gap-4 flex mb-4  flex-col justify-start items-start">
+        <div className="gap-4 flex mb-4 flex-col justify-start items-start">
           <Label htmlFor="name">Nama Pelanggan</Label>
           <Input
             id="name"

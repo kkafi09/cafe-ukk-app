@@ -15,7 +15,7 @@ const getMenu = async (): Promise<IMenu[]> => {
     },
   });
   const responseData = await response.json();
-  const result: IMenu[] = responseData.data.map((menuItem: any) => ({
+  const result: IMenu[] = responseData.data.map((menuItem: IMenu) => ({
     id: menuItem.id,
     nama_menu: menuItem.nama_menu,
     jenis: menuItem.jenis,

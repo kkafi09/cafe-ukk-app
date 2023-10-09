@@ -12,10 +12,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { HiPencilSquare } from "react-icons/hi2";
 import { getMenu } from "../actions";
+import DeleteButtonMenu from "./DeleteButton";
 
 async function TableMenu() {
   const menuData = await getMenu();
-  console.log(menuData);
 
   return (
     <div className="mx-auto h-full mt-16">
@@ -49,13 +49,14 @@ async function TableMenu() {
               <TableCell>{menu.jenis}</TableCell>
               <TableCell className="cursor-pointer">{menu.deskripsi}</TableCell>
               <TableCell>{menu.harga}</TableCell>
-              <TableCell >
+              <TableCell>
                 <Link
                   href={"/admin/menu/update?menuId=" + menu.id}
-                  className="text-end w-full mx-auto text-xl text-primary cursor-pointer"
+                  className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-primary h-10 px-4 py-2 hover:bg-accent hover:text-accent-foreground"
                 >
                   <HiPencilSquare />
                 </Link>
+                <DeleteButtonMenu id={menu.id} />
               </TableCell>
             </TableRow>
           ))}

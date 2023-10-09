@@ -26,7 +26,11 @@ const PaymentButton = ({ id }: { id: number }) => {
   };
 
   return (
-    <Button onClick={() => handlePay(id)} variant={"outline"}>
+    <Button
+      onClick={() => handlePay(id)}
+      variant={"outline"}
+      className="text-green-800 border-green-800 hover:bg-green-700 hover:text-white"
+    >
       <HiOutlineCurrencyDollar />
     </Button>
   );

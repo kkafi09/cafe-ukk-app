@@ -11,6 +11,7 @@ import { IMeja } from "@/types/meja-types";
 import Link from "next/link";
 import { HiPencilSquare } from "react-icons/hi2";
 import { getTable } from "../actions";
+import DeleteButtonTable from "./DeleteButton";
 
 async function TableMeja() {
   const mejaData = await getTable();
@@ -32,9 +33,13 @@ async function TableMeja() {
               <TableCell>{meja.nomor_meja}</TableCell>
               <TableCell>{meja.status}</TableCell>
               <TableCell className="text-xl cursor-pointer flex gap-2 justify-end pr-8 text-primary">
-                <Link href={"/admin/table/update?mejaId=" + meja.id}>
+                <Link
+                  href={"/admin/table/update?mejaId=" + meja.id}
+                  className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-primary h-10 px-4 py-2 hover:bg-accent hover:text-accent-foreground"
+                >
                   <HiPencilSquare />
                 </Link>
+                <DeleteButtonTable id={meja.id} />
               </TableCell>
             </TableRow>
           ))}

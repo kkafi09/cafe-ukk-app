@@ -7,6 +7,7 @@ import { hasCookie, setCookie } from "cookies-next";
 import { redirect } from "next/navigation";
 import * as React from "react";
 import { ScaleLoader } from "react-spinners";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [data, setData] = React.useState({
@@ -42,6 +43,9 @@ const Login = () => {
           window.location.replace("/");
         }
       })
+      .catch((err) => {
+        toast.error("username or password incorrect");
+      })
       .finally(() => {
         setIsLoading(false);
       });
@@ -68,6 +72,7 @@ const Login = () => {
                 name="username"
                 value={data.username}
                 onChange={handleChange}
+                required={true}
               />
             </div>
             <div className="grid w-full max-w-sm items-center gap-1.5">
@@ -78,15 +83,22 @@ const Login = () => {
                 name="password"
                 value={data.password}
                 onChange={handleChange}
+                required={true}
               />
             </div>
           </div>
           <Button className="w-full mt-6">
-            Login {isLoading ? <ScaleLoader /> : ""}
+            {isLoading ? (
+              <ScaleLoader className="text-white w-5 h-5" />
+            ) : (
+              "Login"
+            )}
           </Button>
         </form>
       </div>
-      <p>Develop on <span className="text-red-500">2 DAY</span></p>
+      <p>
+        Develop on <span className="text-red-500">2 DAY</span>
+      </p>
     </main>
   );
 };

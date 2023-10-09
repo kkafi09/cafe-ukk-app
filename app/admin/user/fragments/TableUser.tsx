@@ -12,6 +12,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { HiPencilSquare } from "react-icons/hi2";
 import { getUser } from "../actions";
+import DeleteButtonUser from "./DeleteButton";
 
 async function TableUser() {
   const userData = await getUser();
@@ -43,6 +44,7 @@ async function TableUser() {
                   alt={user.name}
                   width={100}
                   height={100}
+                  className="w-20"
                 />
               </TableCell>
               <TableCell>{user.name}</TableCell>
@@ -51,10 +53,11 @@ async function TableUser() {
               <TableCell className="text-xl cursor-pointer text-primary">
                 <Link
                   href={"/admin/user/update?userId=" + user.id}
-                  className="mx-auto"
+                  className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-primary h-10 px-4 py-2 hover:bg-accent hover:text-accent-foreground"
                 >
                   <HiPencilSquare />
                 </Link>
+                <DeleteButtonUser id={user.id} />
               </TableCell>
             </TableRow>
           ))}

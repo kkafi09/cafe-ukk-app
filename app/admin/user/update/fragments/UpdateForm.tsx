@@ -17,19 +17,19 @@ const UpdateForm = ({ userId }: { userId: number }) => {
   const [photoProfile, setPhotoProfile] = React.useState<FileList | null>(null);
 
   React.useEffect(() => {
-    const fetchMejaData = async () => {
+    const fetchUserData = async () => {
       try {
         const response = await api.get(
           `${process.env.NEXT_PUBLIC_API_URL}/user/${userId}`
         );
-        const existingMejaData = response.data.data; // Adjust this based on your API response structure
-        setUserData(existingMejaData);
+        const existingUserData = response.data.data; // Adjust this based on your API response structure
+        setUserData(existingUserData);
       } catch (error) {
-        console.error("Error fetching table data:", error);
+        toast.error("Gagal Mengambil data User");
       }
     };
 
-    fetchMejaData();
+    fetchUserData();
   }, [userId]);
 
   const handleChange = (
@@ -137,7 +137,9 @@ const UpdateForm = ({ userId }: { userId: number }) => {
           </div>
         </div>
 
-        <Button type="submit" className="w-full mt-10">Perbarui Meja</Button>
+        <Button type="submit" className="w-full mt-10">
+          Perbarui User
+        </Button>
       </form>
     </div>
   );

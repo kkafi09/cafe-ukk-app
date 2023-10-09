@@ -1,4 +1,3 @@
-// AddForm.tsx
 "use client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -24,7 +23,7 @@ const UpdateForm = ({ mejaId }: { mejaId: number }) => {
         const existingMejaData = response.data.data;
         setMejaData(existingMejaData);
       } catch (error) {
-        console.error("Error fetching table data:", error);
+        toast.error("Gagal mengambil data meja");
       }
     };
 
